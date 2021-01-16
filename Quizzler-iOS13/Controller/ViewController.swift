@@ -11,8 +11,9 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var answer1: UIButton!
+    @IBOutlet weak var answer2: UIButton!
+    @IBOutlet weak var answer3: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var scoreLabel: UILabel!
     
@@ -49,9 +50,14 @@ class ViewController: UIViewController {
         progressBar.progress = quizBrain.getProgrees()
         scoreLabel.text = "Score: \(quizBrain.getScore())"
         
+        answer1.setTitle(quizBrain.getQuestionsAnswer(answerNumber: 0), for: .normal)
+        answer2.setTitle(quizBrain.getQuestionsAnswer(answerNumber: 1), for: .normal)
+        answer3.setTitle(quizBrain.getQuestionsAnswer(answerNumber: 2), for: .normal)
+        
         Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { _ in
-            self.trueButton.backgroundColor = UIColor.clear
-            self.falseButton.backgroundColor = UIColor.clear
+            self.answer1.backgroundColor = UIColor.clear
+            self.answer2.backgroundColor = UIColor.clear
+            self.answer3.backgroundColor = UIColor.clear
         }
     }
 }
